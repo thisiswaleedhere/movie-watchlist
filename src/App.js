@@ -1,8 +1,12 @@
-
+import HeaderBar from "./HeaderBar";
+import NavBar from "./NavBar";
 
 function App() {
   return (
-    <h1>Hey there!</h1>
+    <body className="bg-white">
+      <HeaderBar />
+      <NavBar />
+    </body>
   );
 }
 
