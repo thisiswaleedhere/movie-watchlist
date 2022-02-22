@@ -2,15 +2,18 @@ import React from 'react'
 
 function NavBar() {
     return (
-        <div className='text-black text-4xl flex space-x-4 text-center'>
-            <button>
-                <div>1</div>
+        <div className='text-lg text-white font-sans space-x-8 text-center flex-auto mb-14'>
+            <button
+                className='bg-[#383737] hover:bg-blue-700 py-2 px-6 rounded-3xl'>
+                Movie List
             </button>
-            <button>
-                <div>2</div>
+            <button
+                className='bg-[#383737] hover:bg-blue-700 py-2 px-6 rounded-3xl'>
+                Add Movie
             </button>
-            <button>
-                <div>3</div>
+            <button
+                className='bg-[#383737] hover:bg-blue-700 py-2 px-6 rounded-3xl'>
+                Edit Movie
             </button>
         </div>
     )
