@@ -18,7 +18,7 @@ function TitleCard(props) {
 
                 </div>
             </div>
-            <div className="mx-16 px-10 font-mono text-2xl text-gray-400 hover:text-red-600 hover:font-black hover:cursor-pointer">X</div>
+            <div className="mx-16 px-10 font-mono text-md text-gray-400 hover:text-red-600 hover:font-black hover:cursor-pointer">Remove</div>
         </div>
     )
 }
