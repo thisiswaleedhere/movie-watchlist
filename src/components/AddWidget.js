@@ -1,6 +1,6 @@
 import React from "react";
 
-function AddWidget() {
+function AddWidget(props) {
 
     const [formData, setFormData] = React.useState(
         {
@@ -96,7 +96,7 @@ function AddWidget() {
 
                 <button
                     className="bg-blue-400 hover:bg-blue-700 my-20 ml-16 py-1 px-6 rounded-3xl hover:text-white">
-                    Add Movie
+                    {props.type} Movie
                 </button>
 
             </form>
