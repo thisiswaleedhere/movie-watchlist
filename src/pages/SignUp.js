@@ -1,54 +1,36 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserAuth } from "../context/AuthContext";
-import { FcGoogle } from "react-icons/fc"
-import { IconContext } from "react-icons";
 
-function LoginPage() {
+function SignUp() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [errors, setErrors] = useState("");
-
+    const [error, setError] = useState("");
+    const { signUp } = useUserAuth();
     const navigate = useNavigate();
-
-    const { logIn, googleSignIn } = useUserAuth();
 
     const handleLoginSubmit = async (event) => {
         event.preventDefault();
-
-        setErrors("");
-
-
+        setError("");
         try {
-            await logIn(email, password);
-            navigate('/');
+            await signUp(email, password);
+            navigate("/");
 
-        } catch (err) {
-            setErrors(err.message);
-
-
-        }
-    };
-
-    const handleGoogleSignIn = async (event) => {
-        event.preventDefault();
-        try {
-            await googleSignIn();
-            navigate('/');
 
         } catch (error) {
-            setErrors(error.message);
+            setError(error.message);
+
         }
-    }
 
+    };
     return (
-        <div>
+        <div className="backdrop-blur">
             <div className='w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-16'>
-                <h1 className='text-2xl font-medium text-primary mt-4 mb-12 text-center'>Log in to your account</h1>
-                <h2 className="text-md mb-2 text-center text-red-500">{errors}</h2>
+                <h1 className='text-2xl font-medium text-primary mt-4 mb-12 text-center'>Create new account</h1>
+                <h2 className="text-center">{error}</h2>
 
-                <form>
+                <form onSubmit={handleLoginSubmit}>
                     <div>
                         <label htmlFor='email'>Email</label>
                         <input
@@ -70,22 +52,19 @@ function LoginPage() {
                         />
                     </div>
                     <div>
-                        New user? <Link to={'/signup'} className='text-blue-600 hover:underline'> Sign Up.</Link>
+                        Already have an account? <Link to={'/login'} className='text-blue-600 hover:underline'> Login</Link>.
                     </div>
 
                     <div className='flex justify-center items-center mt-6'>
-                        <button className='bg-green-600 py-2 px-4 rounded-md text-sm hover:text-md text-white w-full font-semibold border focus:border-green-900 focus:outline-none hover:bg-green-500 hover:border-green-300' onClick={handleLoginSubmit}>Login</button>
+                        <button className='bg-blue-600 py-2 px-4 w-full text-sm text-white font-semibold rounded-md border focus:outline-none focus:border-blue-900 hover:bg-blue-800 hover:border-blue-300'>Sign Up</button>
                     </div>
                 </form>
-                <div className='mt-4'>
-                    <h5 className="text-center">-------------------- Or --------------------</h5>
-                    <button className="bg-blue-600 py-2 px-4 rounded-md text-sm hover:text-md mt-2 w-full flex mx-auto text-center font-semibold justify-center text-white hover:bg-blue-500"
-                        onClick={handleGoogleSignIn}><IconContext.Provider value={{ style: { verticalAlign: 'middle' }, size: 25 }}><FcGoogle /></IconContext.Provider>Login with Google</button>
-                </div>
             </div>
         </div>
     );
 };
 
 
-export default LoginPage;
+
+
+export default SignUp;

@@ -6,6 +6,9 @@ import AddMovie from "./pages/AddMovie";
 import EditMovie from "./pages/EditMovie";
 import MovieList from "./pages/MovieList";
 import LoginPage from "./pages/LoginPage";
+import SignUp from "./pages/SignUp";
+import { UserAuthContextProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 
 function App() {
@@ -13,15 +16,21 @@ function App() {
 
   return (
     <body className="bg-white">
-      <HeaderBar />
-      <NavBar />
+      <UserAuthContextProvider>
+        <HeaderBar />
+        <NavBar />
 
-      <Routes>
-        <Route path="/addmovie" element={<AddMovie />} />
-        <Route path="/editmovie" element={<EditMovie />} />
-        <Route path="/home" element={<MovieList />} exact />
-        <Route path="/login" element={<LoginPage />} />
-      </Routes >
+        <Routes>
+
+          <Route path="/addmovie" element={<ProtectedRoute><AddMovie /></ProtectedRoute>} />
+          <Route path="/editmovie" element={<ProtectedRoute><EditMovie /></ProtectedRoute>} />
+          <Route path="/" element={<ProtectedRoute><MovieList /></ProtectedRoute>} exact />
+
+
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Routes >
+      </UserAuthContextProvider>
 
     </body>
   );
