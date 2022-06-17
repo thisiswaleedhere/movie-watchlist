@@ -1,30 +1,54 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function NavBar() {
 
-    const navigate = useNavigate();
+
 
     return (
-        <div className='text-lg text-white font-sans space-x-16 text-center flex-auto mb-14'>
+        <div>
 
-            <button onClick={() => navigate("/")}
-                className='bg-[#383737] hover:bg-blue-700 py-2 px-6 rounded-3xl'>
-                Movie List
-            </button>
+            <ul className='text-xs sm:text-sm lg:text-lg text-white font-mono mb-14 flex flex-auto justify-center space-x-3 sm:space-x-4 lg:space-x-16'>
+                <li>
 
+                    <NavLink to="/" className={({ isActive }) => isActive ? ('text-yellow-400') : ('bg-white')}>
+                        <button
+                            className='bg-[#383737] hover:bg-yellow-500 hover:text-yellow-900 hover:shadow-xl hover:font-bold py-2 px-3 sm:px-6  rounded-3xl'>
 
-            <button onClick={() => navigate("/addmovie")}
-                className='bg-[#383737] hover:bg-blue-700 py-2 px-6 rounded-3xl'>
-                Add Movie
-            </button>
+                            Movie List
 
-            <button onClick={() => navigate("/editmovie")}
-                className='bg-[#383737] hover:bg-blue-700 py-2 px-6 rounded-3xl'>
-                Edit Movie
-            </button>
+                        </button>
+                    </NavLink>
+
+                </li>
+
+                <li>
+                    <NavLink to="/addmovie" className={({ isActive }) => isActive ? ('text-yellow-500') : ('bg-white')}>
+                        <button
+                            className='bg-[#383737] hover:bg-yellow-500 hover:text-yellow-900 hover:shadow-xl hover:font-bold py-2 px-3 sm:px-6 rounded-3xl'>
+
+                            Add Movie
+
+                        </button>
+                    </NavLink>
+
+                </li>
+
+                <li>
+                    <NavLink to="/editmovie" className={({ isActive }) => isActive ? ('text-yellow-400') : ('bg-white')}>
+                        <button
+                            className='bg-[#383737] hover:bg-yellow-500 hover:text-yellow-900 hover:shadow-xl hover:font-bold py-2 px-3 sm:px-6 rounded-3xl'>
+
+                            Edit Movie
+
+                        </button>
+                    </NavLink>
+                </li>
+
+            </ul>
         </div >
     )
 }
+
 
 export default NavBar;
