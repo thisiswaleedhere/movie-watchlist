@@ -11,7 +11,7 @@ function FooterElement() {
                 <div className="font-sansserif max-w-2/3 px-3 md:max-w-2xl text-center text-xs mx-auto pb-2"> This web app helps you to keep track of your movie watchlist making it easier to add movies and its details from a big database, edit movie details to make changes to your entries, and delete the ones you have already watched. </div>
                 <div className="text-sm">This app is powered by:</div>
                 <div className="flex justify-center space-x-4">
-                    <div><img src={require("../../public/images/TMDBlogo.svg").default} alt='TMDB logo' /></div>
+                    <div><img src={require("../assets/TMDBlogo.svg").default} alt='TMDB logo' /></div>
                     <div>Firebase Auth</div>
                     <div>Hosting</div>
                 </div>
