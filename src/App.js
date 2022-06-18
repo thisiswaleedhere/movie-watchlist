@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import SignUp from "./pages/SignUp";
 import { UserAuthContextProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+import FooterElement from "./components/Footer";
 
 
 function App() {
@@ -30,6 +31,8 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes >
+
+        <FooterElement />
       </UserAuthContextProvider>
 
     </body>
