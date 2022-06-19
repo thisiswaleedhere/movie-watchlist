@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import SearchCard from "./SearchCard";
 import { BiSearchAlt } from 'react-icons/bi'
 
-function SearchBar() {
+function SearchBar(props) {
 
     const [query, setQuery] = useState('');
     const [movies, setMovies] = useState([]);
     const [view, setView] = useState(false);
+    const [error, setError] = useState('');
+
 
 
 
@@ -27,8 +29,9 @@ function SearchBar() {
 
     const displayErrorMessage = (e) => {
         e.preventDefault();
-        console.alert('Please Enter The Movie Title in The Search Field');
+        setError('Please enter a movie title in the search field');
     }
+
 
 
 
@@ -66,7 +69,10 @@ function SearchBar() {
                             type="text"
                             placeholder="Enter Movie Title..."
                             name="searchMovieTitle"
-                            onChange={(e) => setQuery(e.target.value)}
+                            onChange={(e) => {
+                                setQuery(e.target.value);
+                                setError('');
+                            }}
 
                         />
 
@@ -75,6 +81,8 @@ function SearchBar() {
                             <BiSearchAlt />
                         </button>
                     </div>
+                    <div className="font-sansserif text-red-600 text-sm pt-2">{error}</div>
+
                 </form>
             </div>
 

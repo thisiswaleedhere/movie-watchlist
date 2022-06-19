@@ -1,4 +1,4 @@
-import AddWidget from "../components/AddWidget";
+import EditWidget from "../components/EditWidget";
 import MovieList from "./MovieList";
 
 
@@ -6,7 +6,8 @@ function EditMovie() {
 
     return (
         <>
-            <AddWidget type="Edit" />
+            <div className="text-center text-lg font-sansserif">Select a movie to edit its details</div>
+            <EditWidget />
             <MovieList />
         </>
     )

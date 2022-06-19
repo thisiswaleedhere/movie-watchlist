@@ -1,6 +1,6 @@
 import React from "react";
 
-function AddWidget() {
+function EditWidget(props) {
 
     const [seed, setSeed] = React.useState(1);
 
@@ -42,12 +42,11 @@ function AddWidget() {
         setSeed(Math.random());
     }
 
-
     return (
-        <div className="bg-gray-100 max-w-xl min-w-max mx-6 sm:mx-auto mt-8 p-5 rounded-3xl text-center shadow-xl mb-12" key={seed}>
+        <div className="bg-gray-100 max-w-xl min-w-max mx-6 sm:mx-auto mt-4 p-5 rounded-3xl text-center shadow-xl mb-12" key={seed}>
 
             <form className="flex-column align-middle w-full mb-0 font-sansserif" onSubmit={handleSubmit}>
-                <div className="mb-1 text-gray-700 font-sansserif text-lg">Add Movie Manually</div>
+                <div className="mb-1 text-gray-700 font-sansserif text-lg">Edit Movie Info</div>
 
                 <div>
 
@@ -108,12 +107,17 @@ function AddWidget() {
                     </div>
 
 
+                    {/* <div className="w-28 ml-4">
+                    <label htmlFor="movie-image" className="text-white font-sans text-lg">Movie Image:</label>
+                    <img src="images/Marcus-Rashford.png" alt="Movie Poster" id="movie-image" />
+                    </div> */}
+
                     <button
                         className="mt-5 w-full py-1 sm:py-2 md:py-3 hover:bg-yellow-500 hover:tracking-wider transition-0.5s bg-yellow-400 shadow-xl px-5 rounded-full text-mono font-bold hover:shadow-xl">
-                        Add Movie
+                        Edit Movie
                     </button>
 
-                    <div className="pt-4 hover:underline cursor-pointer" onClick={handleCancel}>
+                    <div className="pt-3 sm:pt-4 hover:underline mx-auto cursor-pointer" onClick={handleCancel}>
                         Cancel
                     </div>
 
@@ -125,4 +129,4 @@ function AddWidget() {
     );
 }
 
-export default AddWidget;
+export default EditWidget;
