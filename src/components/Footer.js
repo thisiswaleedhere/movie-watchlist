@@ -4,11 +4,30 @@ import { CgWebsite } from 'react-icons/cg';
 import { ReactComponent as TMDBLogo } from '../assets/tmdb-logo.svg';
 import { ReactComponent as FirebaseLogo } from '../assets/firebase-logo.svg';
 
+
+import { useNavigate } from 'react-router-dom';
+import { useUserAuth } from '../context/AuthContext';
+
 function FooterElement() {
+
+    const { logOut, user } = useUserAuth();
+    const navigate = useNavigate();
+
+    const handleLogOut = async () => {
+        try {
+            await logOut();
+            navigate('/login');
+
+
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
 
     return (
         <footer>
-            <div className="bg-gray-200 py-4 rounded-t-3xl mt-10 flex-column text-center w-full align-middle font-sansserif">
+            <div className="bottom-0 bg-gray-200 py-4 rounded-t-3xl mt-10 flex-column text-center w-full align-middle font-sansserif">
+                {user && <div className="text-gray-600 hover:text-red-500 hover:underline text-sm cursor-pointer hover:font-bold mx-auto" onClick={handleLogOut}>Log out</div>}
                 <div className="font-sansserif font-extralight text-2xl sm:text-4xl lg:text-5xl text-black pt-3 sm:pt-6 pb-3">MOVIE WATCHLIST</div>
                 <div className="font-sansserif max-w-2/3 px-3 md:max-w-2xl text-center text-xs mx-auto pb-5"> This web app helps you to keep track of your movie watchlist making it easier to add movies and its details from a big database, edit movie details to make changes to your entries, and delete the ones you have already watched. </div>
                 <div className="text-sm mb-1">This app is powered by:</div>
