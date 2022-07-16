@@ -75,7 +75,8 @@ function AddWidget() {
 
 
     return (
-        <div><div className="text-sm max-w-xl mx-auto text-white rounded-lg bg-green-800 text-center">{message}</div>
+        <div className="min-w-[355px] max-w-[1440px]">
+            <div className="text-sm max-w-xl mx-auto text-white rounded-lg bg-green-800 text-center">{message}</div>
             <div className="bg-gray-100 max-w-xl min-w-max mx-6 sm:mx-auto mt-8 p-5 rounded-3xl text-center shadow-xl mb-12" key={seed}>
 
                 <form className="flex-column align-middle w-full mb-0 font-sansserif" onSubmit={handleSubmit}>

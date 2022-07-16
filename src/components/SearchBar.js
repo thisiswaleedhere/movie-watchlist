@@ -57,9 +57,9 @@ function SearchBar(props) {
 
 
     return (
-        <>
+        <div className="min-w-[355px] max-w-[1440px]">
 
-            <div className="bg-gray-100 max-w-3xl min-w-max mx-6 sm:mx-auto p-5 rounded-3xl text-center shadow-xl">
+            <div className="bg-gray-100 max-w-3xl mx-6 md:mx-auto p-5 rounded-3xl text-center shadow-xl min-w-max">
                 <form className="flex-column align-middle w-full mb-0" onSubmit={query ? searchMovies : displayErrorMessage}>
                     <div className="mb-1"><label htmlFor="search-movie-title" className="text-gray-700 font-sansserif text-lg">Search Movie</label></div>
                     <div className="flex relative">
@@ -86,7 +86,7 @@ function SearchBar(props) {
                 </form>
             </div>
 
-            <div>
+            <div className="">
 
                 <div className="mx-auto mt-6 mb-4 font-sansserif">
 
@@ -112,7 +112,7 @@ function SearchBar(props) {
 
             </div>
 
-        </>
+        </div>
 
     )
 }
