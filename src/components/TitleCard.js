@@ -2,14 +2,14 @@ import React from "react";
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { BiEdit } from 'react-icons/bi';
 import MovieDataService from '../services/MovieServices';
+import { useUserAuth } from "../context/AuthContext";
 
 function TitleCard(props) {
 
-    // const [movies, setMovies] = useState([]);
-    // const [seed, setSeed] = useState(1);
+    const { user: { uid } } = useUserAuth();
 
     const deleteHandler = async (id) => {
-        await MovieDataService.deleteMovie(id);
+        await MovieDataService.deleteMovie(id, uid);
         console.log('deletehandlerclicked');
         props.setSeed(Math.random());
         //  getMovies();
@@ -25,7 +25,7 @@ function TitleCard(props) {
 
 
     return (
-        <div className="flex justify-center items-center mx-auto mb-3 bg-gray-100 hover:bg-white rounded-xl px-4 max-w-96 max-h-28 sm:max-h-32 sm:max-w-3xl min-w-[355px]">
+        <div className="flex justify-center items-center mx-auto mb-3 bg-gray-100 hover:bg-white rounded-xl px-4 max-w-[500px] max-h-28 sm:max-h-32 sm:max-w-3xl min-w-[355px]">
 
             <div className="w-2/6 flex justify-evenly">
                 {(props.icon !== 'edit') ? <div className="text-gray-400 px-2 sm:pl-8 cursor-pointer hover:text-red-700 hover:text-lg text-md sm:hover:text-2xl sm:text-xl place-self-center" onClick={(e) => deleteHandler(props.keyid)}><RiDeleteBin6Line /></div> : <div className="text-gray-400 px-2 sm:pl-8 cursor-pointer hover:text-orange-400 hover:text-lg text-md sm:hover:text-2xl sm:text-xl place-self-center" onClick={(e) => props.getMovieId(props.keyid)}><BiEdit /></div>}

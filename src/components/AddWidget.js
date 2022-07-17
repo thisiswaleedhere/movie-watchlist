@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MovieDataService from '../services/MovieServices';
+import { useUserAuth } from "../context/AuthContext";
 
 function AddWidget() {
 
@@ -15,6 +16,8 @@ function AddWidget() {
     const [genre, setGenre] = useState([]);
     const [posterpath, setPosterpath] = useState('');
     const [message, setMessage] = useState('');
+
+    const { user: { uid } } = useUserAuth();
 
 
     const onKeyDown = (e) => {
@@ -58,7 +61,7 @@ function AddWidget() {
     function handleSubmit(event) {
         event.preventDefault();
         setId(Math.floor(Math.random() * 1000000) + 999999);
-        MovieDataService.addMovie(newMovie);
+        MovieDataService.addMovie(newMovie, uid);
         console.log("Submitted")
         setSeed(Math.random());
         setMessage("Movie added successfully")
@@ -75,7 +78,7 @@ function AddWidget() {
 
 
     return (
-        <div className="min-w-[355px] max-w-[1440px]">
+        <div className="min-w-[355px] max-w-[1920px]">
             <div className="text-sm max-w-xl mx-auto text-white rounded-lg bg-green-800 text-center">{message}</div>
             <div className="bg-gray-100 max-w-xl min-w-max mx-6 sm:mx-auto mt-8 p-5 rounded-3xl text-center shadow-xl mb-12" key={seed}>
 

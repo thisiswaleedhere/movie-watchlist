@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MovieDataService from '../services/MovieServices';
 import { FaThumbsUp } from 'react-icons/fa';
+import { useUserAuth } from "../context/AuthContext";
 
 
 function SearchCard(props) {
@@ -12,6 +13,8 @@ function SearchCard(props) {
     const [genre, setGenre] = useState([]);
     const [posterpath, setPosterpath] = useState('');
     const [seed, setSeed] = useState(false);
+
+    const { user: { uid } } = useUserAuth();
 
     const newMovie = {
         id,
@@ -36,7 +39,7 @@ function SearchCard(props) {
     useEffect(() => {
         const timer = setTimeout(() => {
             if (newMovie.id) {
-                MovieDataService.addMovie(newMovie);
+                MovieDataService.addMovie(newMovie, uid);
                 console.log('called');
                 setSeed(true);
 

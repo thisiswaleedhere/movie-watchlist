@@ -12,13 +12,16 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import FooterElement from "./components/Footer";
 
 
-function App() {
 
+function App() {
 
   return (
     <body className="bg-white">
+
       <UserAuthContextProvider>
+
         <HeaderBar />
+
         <NavBar />
 
         <Routes>
@@ -27,12 +30,13 @@ function App() {
           <Route path="/editmovie" element={<ProtectedRoute><EditMovie /></ProtectedRoute>} />
           <Route path="/" element={<ProtectedRoute><MovieList /></ProtectedRoute>} exact />
 
-
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUp />} />
+
         </Routes >
 
         <FooterElement />
+
       </UserAuthContextProvider>
 
     </body>

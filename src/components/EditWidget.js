@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MovieDataService from '../services/MovieServices';
+import { useUserAuth } from "../context/AuthContext";
 
 function EditWidget({ id, setMovieId }) {
 
@@ -13,6 +14,8 @@ function EditWidget({ id, setMovieId }) {
     const [genre, setGenre] = useState([]);
     const [posterpath, setPosterpath] = useState('');
     const [message, setMessage] = useState('');
+
+    const { user: { uid } } = useUserAuth();
 
 
     const onKeyDown = (e) => {
@@ -68,7 +71,7 @@ function EditWidget({ id, setMovieId }) {
 
 
         try {
-            await MovieDataService.updateMovie(id, newMovie);
+            await MovieDataService.updateMovie(id, newMovie, uid);
             setMovieId('');
 
         } catch (error) {
@@ -108,7 +111,7 @@ function EditWidget({ id, setMovieId }) {
 
     const editHandler = async (id) => {
         try {
-            const docSnap = await MovieDataService.getMovie(id);
+            const docSnap = await MovieDataService.getMovie(id, uid);
             console.log("the record is :", docSnap.data());
             setTitle(docSnap.data().title);
             setYear(docSnap.data().year);
@@ -125,17 +128,17 @@ function EditWidget({ id, setMovieId }) {
 
 
     useEffect(() => {
-        console.log("the id to edit:", id);
 
         if (id !== undefined && id !== "") {
             editHandler(id);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
 
 
     return (
 
-        <div className="min-w-[355px] max-w-[1440px]">
+        <div className="min-w-[355px] max-w-[1920px]">
             <div className="text-sm max-w-xl mx-auto text-white rounded-lg bg-green-800 text-center">{message}</div>
             <div className="bg-gray-100 max-w-xl min-w-max mx-6 sm:mx-auto mt-4 p-5 rounded-3xl text-center shadow-xl mb-12" key={seed}>
 

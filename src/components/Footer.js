@@ -26,7 +26,7 @@ function FooterElement() {
     }
 
     return (
-        <footer className="min-w-[355px] max-w-[1440px]">
+        <footer className="min-w-[355px] max-w-[1920px] mx-auto">
             <div className="bottom-0 bg-gray-100 py-4 rounded-t-3xl mt-10 flex-column text-center w-full align-middle font-sansserif">
                 {user && <div className="text-gray-600 hover:text-red-500 hover:underline text-sm cursor-pointer hover:font-bold w-24 mx-auto" onClick={handleLogOut}>Log out <FiLogOut className="inline ml-1" /></div>}
                 <div className="font-sansserif font-bold text-3xl sm:text-4xl md:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-yellow-500 to-orange-400 pt-3 sm:pt-6 pb-3">WATCH ME</div>
@@ -35,7 +35,6 @@ function FooterElement() {
                 <div className="flex justify-center pb-2 space-x-8 align-middle">
                     <div className="w-6 sm:w-10"><a href="https://www.themoviedb.org/" target="_blank" rel="noreferrer"><TMDBLogo /></a></div>
                     <div className="w-16 sm:w-24"><a href="https://firebase.google.com/" target="_blank" rel="noreferrer"><FirebaseLogo /></a></div>
-                    {/*<div>Hosting</div>*/}
                 </div>
                 <hr className="h-0.5 w-2/3 mx-auto bg-yellow-400 mt-2 mb-2" />
                 <div className="flex justify-between max-w-4xl mx-auto text-gray-700 px-8">

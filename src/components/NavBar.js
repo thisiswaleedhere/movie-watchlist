@@ -6,7 +6,7 @@ function NavBar() {
 
 
     return (
-        <div className='min-w-[355px] max-w-[1440px]'>
+        <div className='min-w-[355px] max-w-[1920px]'>
 
             <ul className='text-xs sm:text-sm lg:text-lg text-white font-sansserif mb-12 flex flex-auto justify-center space-x-3 sm:space-x-4 lg:space-x-16'>
                 <li>

@@ -57,7 +57,7 @@ function SearchBar(props) {
 
 
     return (
-        <div className="min-w-[355px] max-w-[1440px]">
+        <div className="min-w-[355px] max-w-[1920px]">
 
             <div className="bg-gray-100 max-w-3xl mx-6 md:mx-auto p-5 rounded-3xl text-center shadow-xl min-w-max">
                 <form className="flex-column align-middle w-full mb-0" onSubmit={query ? searchMovies : displayErrorMessage}>
@@ -95,7 +95,7 @@ function SearchBar(props) {
 
                 </div>
 
-                <div className="mx-auto grid lg:grid-cols-5 sm:grid-cols-4 grid-cols-2 gap-2 px-4 max-w-6xl justify-items-center place-content-center">
+                <div className="mx-auto grid lg:grid-cols-5 sm:grid-cols-4 grid-cols-2 gap-2 xl:gap-6 px-4 max-w-[1440px] justify-items-center place-content-center">
 
                     {movies.map((movie) => (
                         <div key={movie.id} >

@@ -16,7 +16,7 @@ function EditMovie() {
 
     return (
         <>
-            <div className="text-center text-lg font-sansserif min-w-[355px] max-w-[1440px] px-4">Click on the <div className="inline-flex text-gray-400 text-md px-1 align-middle sm:text-xl place-self-center"><BiEdit /></div> icon to edit movie details</div>
+            <div className="text-center text-lg font-sansserif min-w-[355px] max-w-[1920px] px-4">Click on the <div className="inline-flex text-gray-400 text-md px-1 align-middle sm:text-xl place-self-center"><BiEdit /></div> icon to edit movie details</div>
             <EditWidget id={movieId} setMovieId={setMovieId} />
             <MovieList icon="edit" getMovieId={getMovieIdHandler} />
         </>
