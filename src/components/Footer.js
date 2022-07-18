@@ -40,8 +40,8 @@ function FooterElement() {
                 <div className="flex justify-between max-w-4xl mx-auto text-gray-700 px-8">
                     <div className="text-xs pt-1">Made by MW </div>
                     <div className="flex justify-center space-x-4 mt-1">
-                        <div><AiOutlineGithub /></div>
-                        <div><CgWebsite /></div>
+                        <div><a href="https://github.com/thisiswaleedhere" target="_blank" rel="noreferrer" ><AiOutlineGithub /></a></div>
+                        <div><a href="https://waleed-dev-portfolio.vercel.app/" target="_blank" rel="noreferrer" ><CgWebsite /></a></div>
                     </div>
                 </div>
 
