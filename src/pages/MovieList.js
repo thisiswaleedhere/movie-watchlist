@@ -43,7 +43,7 @@ function MovieList(props) {
 
             {loading && <div className="text-6xl w-16 my-20 text-black text-center mx-auto"><div className="animate-bounce"><GiFloatingGhost /></div><div><GiFloatingPlatforms /></div></div>}
 
-            {!movies.length ?
+            {!loading && (!movies.length ?
                 <div>
                     <CgSmileSad className="mx-auto text-4xl mb-2 mt-16" />
                     <div className="text-2xl text-black font-mono text-center mb-20">
@@ -55,7 +55,7 @@ function MovieList(props) {
                     return (
                         <TitleCard keyid={doc.id} title={doc.title} year={doc.year} lang={doc.language} genre={doc.genre} path={doc.posterpath} icon={props.icon} getMovieId={props.getMovieId} setSeed={setSeed} />
                     )
-                })}
+                }))}
 
 
         </div>
