@@ -13,9 +13,14 @@ function SearchBar(props) {
 
 
     useEffect(() => {
-        popularMovies().then(items => setMovies(items.results))
-        setView(false);
-    }, [])
+        if (query === "") {
+            popularMovies().then(items => setMovies(items.results))
+            setView(false);
+            return;
+        }
+        searchMovies();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [query])
 
 
 
