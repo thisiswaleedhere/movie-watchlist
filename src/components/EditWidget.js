@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import MovieDataService from '../services/MovieServices';
 import { useUserAuth } from "../context/AuthContext";
 
@@ -17,6 +17,8 @@ function EditWidget({ id, setMovieId }) {
 
     const { user: { uid } } = useUserAuth();
 
+    const editWidgetRef = useRef(null);
+
 
     const onKeyDown = (e) => {
 
@@ -26,7 +28,6 @@ function EditWidget({ id, setMovieId }) {
             e.preventDefault();
             setGenre(prevState => [...prevState, trimmedInput]);
             setTaginput('');
-            console.log(genre);
         }
     }
 
@@ -62,7 +63,6 @@ function EditWidget({ id, setMovieId }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        console.log(newMovie);
 
         if (title === "" || year === "" || language === "" || genre === []) {
             setWarn("All fields are mandatory");
@@ -82,7 +82,6 @@ function EditWidget({ id, setMovieId }) {
         setYear('');
         setLanguage('');
         setGenre([]);
-        console.log("Submitted")
         setMessage('Movie updated successfully');
 
     };
@@ -103,7 +102,6 @@ function EditWidget({ id, setMovieId }) {
 
     const filterfunction = (e) => {
         e.preventDefault();
-        console.log('x clicked');
         setGenre([]);
     }
 
@@ -112,7 +110,6 @@ function EditWidget({ id, setMovieId }) {
     const editHandler = async (id) => {
         try {
             const docSnap = await MovieDataService.getMovie(id, uid);
-            console.log("the record is :", docSnap.data());
             setTitle(docSnap.data().title);
             setYear(docSnap.data().year);
             setLanguage(docSnap.data().language);
@@ -125,12 +122,20 @@ function EditWidget({ id, setMovieId }) {
     }
 
 
+    const scrollFunction = () => {
+        if (editWidgetRef) {
+            editWidgetRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+    }
+
+
 
 
     useEffect(() => {
 
         if (id !== undefined && id !== "") {
-            editHandler(id);
+            editHandler(id)
+                .then(() => scrollFunction());
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
@@ -142,7 +147,7 @@ function EditWidget({ id, setMovieId }) {
             <div className="text-sm max-w-xl mx-auto text-white rounded-lg bg-green-800 text-center">{message}</div>
             <div className="bg-gray-100 max-w-xl min-w-max mx-6 sm:mx-auto mt-4 p-5 rounded-3xl text-center shadow-xl mb-12" key={seed}>
 
-                <form className="flex-column align-middle w-full mb-0 font-sansserif" onSubmit={handleSubmit}>
+                <form className="flex-column align-middle w-full mb-0 font-sansserif" onSubmit={handleSubmit} ref={editWidgetRef}>
                     <div className="mb-1 text-gray-700 font-sansserif text-lg">Edit Movie Info</div>
                     <div className="text-sm text-red-500">{warn}</div>
 
